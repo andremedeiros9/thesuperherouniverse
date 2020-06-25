@@ -12,9 +12,9 @@
         />
       </div>
       <div class="character-box" v-if="typeof character.results != 'undefined'">
-        <div class="superhero-name">{{ character.response }}</div>
+        <div class="superhero-name">{{ character.results[0].name }}</div>
         <div class="superhero-image">
-          <img />
+          <img v-bind:src="'url_base' + 'character.results[0].id' + '/image'" />
         </div>
       </div>
     </main>
@@ -104,8 +104,13 @@ export default {
   font-style: inherit;
 }
 
-#superhero-name {
+.superhero-name {
   font-size: 100px;
+  text-align: center;
+}
+
+.superhero-image {
+  text-align: center;
 }
 
 main {
