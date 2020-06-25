@@ -27,8 +27,7 @@ export default {
   data() {
     return {
       acess_token: "",
-      url_base:
-        "https://superheroapi.com/api/3326108260779442" + "/jsonp?callback=?",
+      url_base: "http://localhost:8080/api/3326108260779442",
       query: "",
       character: {}
     };
