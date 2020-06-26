@@ -12,9 +12,13 @@
         />
       </div>
       <div class="character-box" v-if="typeof character.results != 'undefined'">
-        <div class="superhero-name">{{ character.results[0].name }}</div>
-        <div class="superhero-image">
-          <img v-bind:src="'url_base' + 'character.results[0].id' + '/image'" />
+        <div
+          class="superhero-name"
+          v-for="hero in character.results"
+          v-bind:key="hero"
+        >{{ hero.name }}</div>
+        <div class="superhero-image" v-for="photo in character.results" v-bind:key="photo">
+          <img v-bind:src="photo.image.url" />
         </div>
       </div>
     </main>
@@ -104,13 +108,16 @@ export default {
   font-style: inherit;
 }
 
+.character-box:after {
+  table-layout: auto;
+  background-color: bisque;
+}
 .superhero-name {
-  font-size: 100px;
-  text-align: center;
+  vertical-align: text-top;
 }
 
 .superhero-image {
-  text-align: center;
+  vertical-align: baseline;
 }
 
 main {
