@@ -12,16 +12,17 @@
         />
       </div>
       <div class="character-box" v-if="typeof character.results != 'undefined'">
-        <div
-          class="superhero-name"
-          v-for="hero in character.results"
-          v-bind:key="hero"
-        >{{ hero.name }}</div>
-        <div class="superhero-image" v-for="photo in character.results" v-bind:key="photo">
-          <img v-bind:src="photo.image.url" />
+        <div class="superhero-name" v-for="hero in character.results" v-bind:key="hero">
+          {{ hero.name }}
+          <button>
+            <img v-bind:src="hero.image.url" />
+          </button>
         </div>
       </div>
     </main>
+    <section class="new-view">
+      <div class="character-description" v-if="typeof character.results != 'undefined'"></div>
+    </section>
   </div>
 </template>
 
@@ -103,25 +104,48 @@ export default {
 .search-box .search-bar:focus {
   box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
   background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0px 0px 8px 3px paleturquoise;
 
   text-align: center;
   font-style: inherit;
 }
 
-.character-box:after {
-  table-layout: auto;
-  background-color: bisque;
-}
-.superhero-name {
-  vertical-align: text-top;
-}
-
-.superhero-image {
-  vertical-align: baseline;
-}
-
 main {
   min-height: 100vh;
   padding: 25px;
+}
+
+.character-box {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px -15px;
+
+  text-align: center;
+}
+
+.superhero-name {
+  width: 33.333%;
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+  padding: 60px;
+
+  color: paleturquoise;
+  text-align: center;
+  font-weight: 600;
+  font-size: 50px;
+
+  align-content: center;
+}
+.superhero-name img {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 8px 8px 8px 8px;
+}
+
+button:focus {
+  box-shadow: 0px 0px 16px 6px paleturquoise;
+  border-radius: 8px 8px 8px 8px;
 }
 </style>
